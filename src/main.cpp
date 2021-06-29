@@ -20,6 +20,18 @@ int main(int argc, char *argv[]) {
   double ic = get_ic(file_name);
   unsigned int nr = get_nr(file_name);
   std::vector<int> spots = get_spots(file_name);
+
+  std::cout << ">>> Aposta lida com sucesso!" << std::endl;
+  std::cout << "    Você apostará um total de $" << ic << " créditos." << std::endl;
+  std::cout << "    Jogará um total de " << nr << " rodadas, apostando $" << ic/nr << " créditos pro rodada" << std::endl;
+  std::cout << "    Sua aposta de "<< spots.size() <<" números, eles são: [ ";
+  for(int spot : spots) 
+    std::cout << spot << " ";
+  std::cout << "]" << std::endl;
+
+  for(int i = 0; i < nr; i++) {
+
+  }
   
 
   return 0;
