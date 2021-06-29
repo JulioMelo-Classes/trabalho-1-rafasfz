@@ -23,8 +23,8 @@ int main(int argc, char *argv[]) {
 
   std::cout << ">>> Aposta lida com sucesso!" << std::endl;
   std::cout << "    Você apostará um total de $" << ic << " créditos." << std::endl;
-  std::cout << "    Jogará um total de " << nr << " rodadas, apostando $" << ic/nr << " créditos pro rodada" << std::endl;
-  std::cout << "    Sua aposta de "<< spots.size() <<" números, eles são: [ ";
+  std::cout << "    Jogará um total de " << nr << " rodadas, apostando $" << ic/nr << " créditos por rodada" << std::endl;
+  std::cout << "    Sua aposta tem "<< spots.size() <<" números, eles são: [ ";
   for(int spot : spots) 
     std::cout << spot << " ";
   std::cout << "]" << std::endl;
