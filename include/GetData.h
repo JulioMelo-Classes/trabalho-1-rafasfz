@@ -9,6 +9,16 @@
 
 namespace get_data {
 
+  void invalid_input() {
+    std::cout << "Entrada inválida" << std::endl;
+    std::cout << "Verifique se sua entrada satisfaz as seguintes regras:" << std::endl;
+    std::cout << "1- Repetição de números apostados" << std::endl;
+    std::cout << "2- Quantidade de números apostados superior a 15" << std::endl;
+    std::cout << "3- Presença de caracteres que não sejam números" << std::endl;
+    std::cout << "4- Formatação diferente da proposta" << std::endl;
+    std::cout << "5- Arquivo informado inexistente" << std::endl;
+  }
+
   double get_ic(std::string file_name) {
     std::ifstream input_file(file_name);
     std::string line;
