@@ -37,33 +37,69 @@ namespace kenobet {
           /*! Adds a number to the spots only if the number is not already there.
               @param spot_ The number we wish to include in the bet.
               @return T if number chosen is successfully inserted; F otherwise. */
-          bool add_number( number_type spot_ );
+          bool add_number( number_type spot_ ) {
+              for(number_type i : m_spots) {
+                  if(i == spot_)
+                    return false;
+              }
+
+              m_spots.push_back(spot_);
+
+              return true;
+          }
 
           /*! Sets the amount of money the player is betting.
               @param wage_ The wage.
               @return True if we have a wage above zero; false otherwise. */
-          bool set_wage( cash_type wage_ );
+          bool set_wage( cash_type wage_ ) {
+              if(wage_ < 0) 
+                return false;
+              
+              m_wage = wage_;
+
+              return true;
+          }
 
           //! Resets a bet to an empty state.
-          void reset( void );
+          void reset( void ) {
+              m_wage = 0;
+              m_spots.clear();
+          }
 
           /*! Retrieves the player's wage on this bet.
               @return The wage value. */
-          cash_type get_wage( void ) const;
+          cash_type get_wage( void ) {
+              return m_wage;
+          }
 
           /*! Returns to the current number of spots in the player's bet.
               @return Number of spots present in the bet. */
-          size_t size( void ) const;
+          size_t size( void ) {
+              return m_spots.size();
+          }
 
           /*! Determine how many spots match the hits passed as argument.
               @param hits_ List of hits randomly chosen by the computer.
               @return An vector with the list of hits. */
           set_of_numbers_type
-          get_hits( const set_of_numbers_type & hits_ ) const;
+          get_hits( const set_of_numbers_type & hits_ ) {
+              set_of_numbers_type hits_matched;
+
+              for(number_type i : hits_) {
+                  for(number_type j : m_spots) {
+                      if(i == j)
+                        hits_matched.push_back(i);
+                  }
+              }
+
+              return hits_matched;
+          }
 
           /*! Return a vector< spot_type > with the spots the player has picked so far.
               @return The vector< spot_type > with the player's spots picked so far. */
-          set_of_numbers_type get_spots( void ) const;
+          set_of_numbers_type get_spots( void ) {
+              return m_spots;
+          };
 
       private:
           set_of_numbers_type m_spots;  //<! The player's bet.
