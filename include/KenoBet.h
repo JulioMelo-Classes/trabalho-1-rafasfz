@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 namespace kenobet {
 
@@ -100,6 +102,30 @@ namespace kenobet {
           set_of_numbers_type get_spots( void ) {
               return m_spots;
           };
+
+          set_of_numbers_type get_random_hits() {
+              set_of_numbers_type hits;
+
+              for(int i = 0; i < 15; i++) {
+                  int random_number;
+                  do {
+                    random_number = (rand()%80)+1;
+                  } while(search(hits, random_number));
+                  hits.push_back(random_number);
+              }
+
+              return hits;
+          }
+
+          bool search(set_of_numbers_type list, number_type element) {
+              for(auto num : list) {
+                  if(num == element) {
+                      return true;
+                  }
+              }
+
+              return false;
+          }
 
       private:
           set_of_numbers_type m_spots;  //<! The player's bet.
