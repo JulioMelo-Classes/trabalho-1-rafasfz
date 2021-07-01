@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-#include <ctime>
 
 namespace kenobet {
 
@@ -40,12 +39,12 @@ namespace kenobet {
               @param spot_ The number we wish to include in the bet.
               @return T if number chosen is successfully inserted; F otherwise. */
           bool add_number( number_type spot_ ) {
-              for(number_type i : m_spots) {
+              for(number_type i : this->m_spots) {
                   if(i == spot_)
                     return false;
               }
 
-              m_spots.push_back(spot_);
+              this->m_spots.push_back(spot_);
 
               return true;
           }
@@ -57,27 +56,27 @@ namespace kenobet {
               if(wage_ < 0) 
                 return false;
               
-              m_wage = wage_;
+              this->m_wage = wage_;
 
               return true;
           }
 
           //! Resets a bet to an empty state.
           void reset( void ) {
-              m_wage = 0;
-              m_spots.clear();
+              this->m_wage = 0;
+              this->m_spots.clear();
           }
 
           /*! Retrieves the player's wage on this bet.
               @return The wage value. */
           cash_type get_wage( void ) {
-              return m_wage;
+              return this->m_wage;
           }
 
           /*! Returns to the current number of spots in the player's bet.
               @return Number of spots present in the bet. */
           size_t size( void ) {
-              return m_spots.size();
+              return this->m_spots.size();
           }
 
           /*! Determine how many spots match the hits passed as argument.
@@ -88,7 +87,7 @@ namespace kenobet {
               set_of_numbers_type hits_matched;
 
               for(number_type i : hits_) {
-                  for(number_type j : m_spots) {
+                  for(number_type j : this->m_spots) {
                       if(i == j)
                         hits_matched.push_back(i);
                   }
@@ -100,7 +99,7 @@ namespace kenobet {
           /*! Return a vector< spot_type > with the spots the player has picked so far.
               @return The vector< spot_type > with the player's spots picked so far. */
           set_of_numbers_type get_spots( void ) {
-              return m_spots;
+              return this->m_spots;
           };
 
           set_of_numbers_type get_random_hits() {
