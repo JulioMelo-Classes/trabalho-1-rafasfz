@@ -25,6 +25,18 @@ namespace kenobet {
       {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}
   };
 
+  void show_hits(int spots_size) {
+      std::cout << "        ----------+-----------" << std::endl;
+    std::cout << "        Hits      | Retorno" << std::endl;
+
+    for(int i = 0; i <= spots_size; i++) {
+        if(i > 9)
+            std::cout << "        " << i <<"        | " << hits[spots_size - 1][i] <<std::endl;
+        else
+            std::cout << "         " << i <<"        | " << hits[spots_size - 1][i] <<std::endl;
+    }
+  }
+
   using number_type = unsigned short int; //<! data type for a keno hit.
   using cash_type = float; //<! Defines the wage type in this application.
   using set_of_numbers_type = std::vector< number_type >;

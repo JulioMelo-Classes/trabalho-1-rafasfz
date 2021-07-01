@@ -33,16 +33,7 @@ int main(int argc, char *argv[]) {
     std::cout << spot << " ";
   std::cout << "]" << std::endl;
 
-  std::cout << "        ----------+-----------" << std::endl;
-  std::cout << "        Hits      | Retorno" << std::endl;
-
-  for(int i = 0; i <= spots.size(); i++) {
-    if(i > 9) {
-      std::cout << "        " << i <<"        | " << hits[spots.size() - 1][i] <<std::endl;
-    } else {
-      std::cout << "         " << i <<"        | " << hits[spots.size() - 1][i] <<std::endl;
-    }
-  }
+  show_hits(spots.size());
 
   double total_money = 0;
 
