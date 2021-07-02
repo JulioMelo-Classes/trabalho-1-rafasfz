@@ -6,6 +6,40 @@
 #include <sstream>
 #include <iterator>
 
+bool verify_string(std::string toVerify, std::string vaildChars) {
+  for (auto l1 : toVerify) {
+    bool valid = false;
+    for (auto l2 : vaildChars) {
+      if(l1 == l2)
+        valid = true;
+    }
+    if(!valid)
+      return false;
+  }
+
+  return true;
+}
+
+bool verify_inputs(std::string file_name) {
+  std::ifstream input_file(file_name);
+  std::string line;
+
+  std::getline(input_file, line);
+
+  if(!verify_string(line, "0123456789. "))
+    return false;
+
+  std::getline(input_file, line);
+  if(!verify_string(line, "0123456789. "))
+    return false;
+
+  std::getline(input_file, line);
+  if(!verify_string(line, "0123456789. "))
+    return false;
+
+  return true;
+}
+
 void invalid_input()
 {
   std::cout << "Entrada inválida" << std::endl;
@@ -90,6 +124,9 @@ bool validate_input(std::string file_name)
     if (finded > 1)
       return false;
   }
+
+  if(!verify_inputs(file_name))
+    return false;
 
   return true;
 }

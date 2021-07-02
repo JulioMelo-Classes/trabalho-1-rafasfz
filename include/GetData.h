@@ -7,6 +7,8 @@
 #include <sstream>
 #include <iterator>
 
+bool verify_string(std::string toVerify, std::string vaildChars);
+
 void invalid_input();
 
 double get_ic(std::string file_name);
