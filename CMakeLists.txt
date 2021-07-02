@@ -8,4 +8,6 @@ project(keno)
 add_executable(
   keno
   src/main.cpp
+  src/GetData.cpp
+  src/KenoBet.cpp
 )
