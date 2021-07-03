@@ -1,3 +1,9 @@
+/**
+ * @file GetData.cpp
+ * @details Implmentando funcções do header GetData.h
+ */
+
+
 #include "../include/GetData.h"
 
 #include <iostream>

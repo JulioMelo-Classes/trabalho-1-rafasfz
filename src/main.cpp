@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @details Recebe como paremetro o diretório de onde o arquivo de entrada se encontra
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>

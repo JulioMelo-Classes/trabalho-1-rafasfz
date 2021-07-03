@@ -1,3 +1,8 @@
+/**
+ * @file KenoBet.cpp
+ * @details Implmentando metodos e funções do header KenoBet.h
+ */
+
 #include "../include/KenoBet.h"
 
 #include <iostream>
