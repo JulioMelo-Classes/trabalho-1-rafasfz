@@ -1,3 +1,8 @@
+/**
+ * @file KenoBet.h
+ * @details Contém a classe KenoBet, funções para saber os hits e a tabela de hits.
+ */
+
 #ifndef KENOBET_H
 #define KENOBET_H
 
@@ -20,61 +25,72 @@ const std::vector<std::vector<float>> hits = {
     {0, 0, 0, 0.5, 1, 2, 4, 24, 72, 250, 500, 2000, 4000},
     {0, 0, 0, 0.5, 0.5, 3, 4, 5, 20, 80, 240, 500, 3000, 6000},
     {0, 0, 0, 0.5, 0.5, 2, 3, 5, 12, 50, 150, 500, 1000, 2000, 7500},
-    {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}};
+    {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}}; //<! Tabela com os fatores multiplicativos do dinheiro apostado baseado na quantidade de números apostados e números acerados
 
+/*! Printa uma a tabela de hits de acordo com o tamanho dos spots
+    @param spots_size o tamanho do número de spots. */
 void show_hits(int spots_size);
 
 using number_type = unsigned short int; //<! data type for a keno hit.
 using cash_type = float;                //<! Defines the wage type in this application.
 using set_of_numbers_type = std::vector<number_type>;
 
+//!  Classe para a aposta
 class KenoBet
 {
 public:
     //! Creates an empty Keno bet.
     KenoBet() : m_wage(0){/* empty */};
 
-    /*! Adds a number to the spots only if the number is not already there.
-    @param spot_ The number we wish to include in the bet.
-    @return T if number chosen is successfully inserted; F otherwise. */
+    /*! Adiciona um número ao spot se o número ainda não estiver incluido.
+    @param spot_ o número que sera incluido ao spot.
+    @return T se o número conseguiu ser inserio, caso o contrário F. */
     bool add_number(number_type spot_);
 
-    /*! Sets the amount of money the player is betting.
-    @param wage_ The wage.
-    @return True if we have a wage above zero; false otherwise. */
+    /*! Seta o quanto o jogador irá apostar nessa rodada.
+    @param wage_ A quantidade do dinheiro que sera apostada.
+    @return T se a quantidade for maior que zero, caso o contrário F. */
     bool set_wage(cash_type wage_);
 
     //! Resets a bet to an empty state.
     void reset(void);
 
-    /*! Retrieves the player's wage on this bet.
-    @return The wage value. */
+    /*! Retorna a aposta do jogador
+    @return O valor da aposta. */
     cash_type get_wage(void);
 
-    /*! Returns to the current number of spots in the player's bet.
-    @return Number of spots present in the bet. */
+    /*! Retorna a quanitdade de número que tem no spot atual.
+    @return Número de spot atual na aposta. */
     size_t size(void);
 
-    /*! Determine how many spots match the hits passed as argument.
-    @param hits_ List of hits randomly chosen by the computer.
-    @return An vector with the list of hits. */
+    /*! Determina quantos números do spots são o mesmo dos hits passados como argumentos.
+    @param hits_ Uma lista de 15 números aletórios diferentes.
+    @return Retorna um vetor com os números que combinaram. */
     set_of_numbers_type
     get_hits(const set_of_numbers_type &hits_);
 
-    /*! Return a vector< spot_type > with the spots the player has picked so far.
-    @return The vector< spot_type > with the player's spots picked so far. */
+    /*! Retorna um vetor< spot_type > com os spots que o jogador escolheu.
+    @return O vetor< spot_type >  com os spots que o jogador escolheu. */
     set_of_numbers_type get_spots(void);
 
+    /*! Retorna um vetor< spot_type > com 15 números aleatórios.
+    @return O vetor< spot_type >  com 15 números aleatórios. */
     set_of_numbers_type get_random_hits();
 
+    /*! Verifica se um número está dentro de uma lista
+    @param list_ lista que será verificada
+    @param element elemento que será verificado se esta dentro da lista
+    @return T caso o elemento esteja na lista, F caso o contrario. */
     bool search(set_of_numbers_type list, number_type element);
 
+    /*! Retorna o dinheiro total ganho em todas as apostas
+    @return O número em dinheiro total ganho nas apostas */
     cash_type get_total_money();
 
 private:
-    set_of_numbers_type m_spots; //<! The player's bet.
-    cash_type m_wage;            //<! The player's wage
-    cash_type total_money = 0;
+    set_of_numbers_type m_spots; //<! Os números da aposta atual
+    cash_type m_wage;            //<! O dinheiro da aposta atual
+    cash_type total_money = 0;   //<! O dinheiro ganhado de todas as apostas somados
 };
 
 #endif
