@@ -52,7 +52,7 @@ public:
     @return T se a quantidade for maior que zero, caso o contrário F. */
     bool set_wage(cash_type wage_);
 
-    //! Resets a bet to an empty state.
+    //! Reseta aposta para um estado vazio
     void reset(void);
 
     /*! Retorna a aposta do jogador
