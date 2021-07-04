@@ -26,6 +26,15 @@ make
 ```
 
 ## 🤖 Executando o projeto
+Primeiramente crie um arquivo com as entradas do programa, siga o exemplo abaixo
+```
+1500.0
+3
+21 12 64
+```
+
+A primeira linha é o número de créditos que será apostado inicialmente, segunda linha é o número de apostas que serão executadas e por fim na terceira linha é o conjunto de até 15 números inteiros únicos em qualquer ordem separados por espaços que serão usados para as apostas.
+
 Para isso siga o comando abaixo no seu terminal
 
 ```bash
@@ -37,6 +46,16 @@ Para isso siga o comando abaixo no seu terminal
 ```bash
 # Executa o projeto no arquvio input.txt da pasta data na raiz do projeto
 ./keno ../data/input.txt
+```
+
+```bash
+# Executa o projeto no arquvio input2.txt da pasta data na raiz do projeto
+./keno ../data/input2.txt
+```
+
+```bash
+# Executa o projeto no arquvio input_invalido.txt da pasta data na raiz do projeto
+./keno ../data/input_invalido.txt
 ```
 
 
