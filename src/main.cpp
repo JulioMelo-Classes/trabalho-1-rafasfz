@@ -8,6 +8,21 @@
 #include <ctime>
 #include "../include/GetData.h"
 #include "../include/KenoBet.h"
+/*
+Avaliação
+Processamento do Arquivo de Entrada: 0,75 (faltou o caso em que o arquivo tem menos que 3 linhas; faltou chegar se o numero apostado é maior que 80)
+Execução correta: 0,8 (20% a menos por causa do uso de variávies globais)
+Interfcace Textual: 0,8
+Documentação: 1
+Compilação automatizada: 1
+Organização em src, include, build, data: 1
+
+Comentários
+- Vi que você usou uma variável global (no KenoBet.h), como você sabe, o uso de variáveis globais é um grande NO-GO em qualquer programa. Vou tirar pontos
+da parte de código por isso (20%). Neste caso, a melhor forma seria você colocar a variável como membro estático da classe KenoBet(ainda assim não é bom),
+ou colocar como variável estática em um método usado para acessar os valores.
+- Acho que você poderia organizar a parte de processamento do arquivo de etrada, bem como a interface textual em outras classes, assim o código ficaria melhor.
+*/
 
 int main(int argc, char *argv[]) {
   srand(time(0));
